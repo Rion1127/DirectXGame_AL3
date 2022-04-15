@@ -24,6 +24,15 @@ void GameScene::Initialize() {
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
 	// 3Dモデルの生成
 	model_ = Model::Create();
+
+	// X, Y, Z方向のスケーリングを設定
+	worldTransform_.scale_ = {5.0f, 5.0f, 5.0f};
+	// X, Y, Z軸周りの回転角を設定
+	worldTransform_.rotation_ = {XM_PI / 4.0f, XM_PI / 4.0f, 0.0f};
+	//度数法の角度で考えたい場合は、XMConvertToRadians(float)を入れる
+	// X, Y, Z軸周りの平行移動を設定
+	worldTransform_.translation_ = {10.0f, 10.0f, 10.0f};
+
 	//ワールドトランスフォームの初期化
 	worldTransform_.Initialize();
 	//ビュープロジェクションの初期化
@@ -31,8 +40,7 @@ void GameScene::Initialize() {
 	//サウンドデータの読み込み
 	soundDatahandle_ = audio_->LoadWave("se_sad03.wav");
 	//音声再生
-	//voiceHandle_ = audio_->PlayWave(soundDatahandle_,true);
-	
+	// voiceHandle_ = audio_->PlayWave(soundDatahandle_,true);
 }
 
 void GameScene::Update() {
@@ -50,12 +58,12 @@ void GameScene::Update() {
 		audio_->StopWave(voiceHandle_);
 	}
 
-	//変数の値をインクリメント
-	value_++;
-	//デバッグテキストの表示
-	std::string strDebug = std::string("Value:") + std::to_string(value_);
-	//デバッグテキストの表示
-	debugText_->Print(strDebug,50,50,1.0f);
+	////変数の値をインクリメント
+	// value_++;
+	////デバッグテキストの表示
+	// std::string strDebug = std::string("Value:") + std::to_string(value_);
+	////デバッグテキストの表示
+	// debugText_->Print(strDebug,50,50,1.0f);
 }
 
 void GameScene::Draw() {
@@ -97,7 +105,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
-	sprite_->Draw();
+	// sprite_->Draw();
 
 	// デバッグテキストの描画
 	debugText_->DrawAll(commandList);
