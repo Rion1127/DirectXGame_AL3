@@ -212,12 +212,13 @@ void GameScene::Update() {
 	}
 
 	XMFLOAT3 frontVec = {0, 0, 0};
-	XMFLOAT3 NormalizeVec = {1, 0, 1};
+	XMFLOAT3 NormalizeVec = {0, 0, 1};
+	float moveSopeed = 0.2f;
 
 	//プレイヤーの正面ベクトル
 	frontVec = {
-	  sin(worldTransform_[PartId::Chest].rotation_.y), 0,
-	  cos(worldTransform_[PartId::Chest].rotation_.y)};
+	  sin(worldTransform_[PartId::Chest].rotation_.y) * moveSopeed, 0,
+	  cos(worldTransform_[PartId::Chest].rotation_.y) * moveSopeed};
 
 	//押した方向で移動ベクトルを変更
 	if (input_->PushKey(DIK_UP)) {
